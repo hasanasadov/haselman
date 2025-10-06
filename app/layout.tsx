@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     siteName: "Elman Imamaliyev",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/elman.jpg",
         width: 1200,
         height: 630,
         alt: "Elman Imamaliyev Academic Portfolio",
@@ -33,6 +33,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+
   return (
     <html lang="az">
       <body

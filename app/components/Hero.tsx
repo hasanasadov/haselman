@@ -42,7 +42,7 @@ export default function Hero() {
       </motion.p>
       <motion.a
         href="#haqqında"
-        className="btn-primary mt-8 z-10"
+        className=" glass btn-primary mt-8 z-10 !text-white"
         whileHover={{ scale: 1.05 }}
       >
         {t.button}

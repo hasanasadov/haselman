@@ -1,25 +1,15 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
 import LangSwitch, { useLang } from "./LangSwitch";
-
-const links = [
-  "Haqqında",
-  "Tədqiqat",
-  "Layihələr",
-  "Uğurlar",
-  "Nəşrlər",
-  "Bloq",
-  "Əlaqə",
-];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
   const { lang } = useLang();
+
   const links = [
     lang === "az" ? "Haqqında" : "About",
     lang === "az" ? "Tədqiqat" : "Research",
@@ -41,11 +31,15 @@ export default function Navbar() {
       initial={{ y: -80 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
-      className={`fixed top-0 left-0 w-full z-50 px-6 py-4 ${
-        scrolled ? "glass backdrop-blur-xl shadow-lg" : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 w-full z-[60] px-6 py-4 transition-all duration-500 !border-0 `}
     >
-      <div className="max-w-6xl mx-auto flex justify-between items-center">
+      <div
+        className={`max-w-6xl mx-auto flex justify-between items-center !border-0 transition-all duration-500 ${
+          scrolled
+            ? "glass backdrop-blur-xl shadow-lg p-4"
+            : "bg-transparent backdrop-blur-none"
+        }`}
+      >
         <a
           href="#hero"
           className="text-2xl font-bold gradient-text tracking-wide"
@@ -53,6 +47,7 @@ export default function Navbar() {
           E. İmaməliyev
         </a>
 
+        {/* Desktop menu */}
         <div className="hidden md:flex items-center gap-6 text-sm">
           {links.map((link) => (
             <a
@@ -67,34 +62,56 @@ export default function Navbar() {
           <ThemeToggle />
         </div>
 
+        {/* Hamburger button */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden text-white focus:outline-none"
+          className="md:hidden text-white dark:text-gray-100 focus:outline-none"
         >
           {open ? <X size={26} /> : <Menu size={26} />}
         </button>
       </div>
 
-      {open && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="absolute top-16 left-0 w-full glass py-6 flex flex-col items-center gap-4 md:hidden"
-        >
-          {links.map((link) => (
-            <a
-              key={link}
-              href={`#${link.toLowerCase()}`}
+      {/* Animated mobile menu */}
+      <AnimatePresence>
+        {open && (
+          <>
+            {/* Background overlay */}
+            <motion.div
+              key="overlay"
+              className="fixed inset-0 z-[40] bg-black/60 dark:bg-black/70 backdrop-blur-md"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               onClick={() => setOpen(false)}
-              className="hover:text-yellow-400 transition"
+            />
+
+            {/* Menu content */}
+            <motion.div
+              key="menu"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="absolute top-16 left-0 w-full z-[50] glass backdrop-blur-2xl bg-white/20 dark:bg-black/40 py-6 flex flex-col items-center gap-4 md:hidden"
             >
-              {link}
-            </a>
-          ))}
-          <LangSwitch />
-          <ThemeToggle />
-        </motion.div>
-      )}
+              {links.map((link) => (
+                <a
+                  key={link}
+                  href={`#${link.toLowerCase()}`}
+                  onClick={() => setOpen(false)}
+                  className="hover:text-yellow-400 transition text-lg"
+                >
+                  {link}
+                </a>
+              ))}
+              <div className="flex items-center gap-4 mt-4">
+                <LangSwitch />
+                <ThemeToggle />
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 }
