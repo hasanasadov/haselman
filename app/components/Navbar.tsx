@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
 import LangSwitch, { useLang } from "./LangSwitch";
 
@@ -27,11 +27,8 @@ export default function Navbar() {
   }, []);
 
   return (
-    <motion.nav
-      initial={{ y: -80 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6 }}
-      className={`fixed top-0 left-0 w-full z-[60] px-6 py-4 transition-all duration-500 !border-0 `}
+    <nav
+      className={`fixed top-0 animateFadeIn left-0 w-full z-[60] px-6 py-4 transition-all duration-500 !border-0 `}
     >
       <div
         className={`max-w-6xl mx-auto flex justify-between items-center !border-0 transition-all duration-500 ${
@@ -76,23 +73,16 @@ export default function Navbar() {
         {open && (
           <>
             {/* Background overlay */}
-            <motion.div
+            <div
               key="overlay"
-              className="fixed inset-0 z-[40] bg-black/60 dark:bg-black/70 backdrop-blur-md"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+              className="fixed inset-0 animateOpacity z-[40] bg-black/60 dark:bg-black/70 backdrop-blur-md"
               onClick={() => setOpen(false)}
             />
 
             {/* Menu content */}
-            <motion.div
+            <div
               key="menu"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-              className="absolute top-16 left-0 w-full z-[50] glass backdrop-blur-2xl bg-white/20 dark:bg-black/40 py-6 flex flex-col items-center gap-4 md:hidden"
+              className="absolute top-16 animateFadeIn animateOpacity left-0 w-full z-[50] glass backdrop-blur-2xl bg-white/20 dark:bg-black/40 py-6 flex flex-col items-center gap-4 md:hidden"
             >
               {links.map((link) => (
                 <a
@@ -108,10 +98,10 @@ export default function Navbar() {
                 <LangSwitch />
                 <ThemeToggle />
               </div>
-            </motion.div>
+            </div>
           </>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </nav>
   );
 }

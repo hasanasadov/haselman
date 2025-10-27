@@ -1,5 +1,4 @@
 "use client";
-import { motion } from "framer-motion";
 import { Shield, Lock, Cloud, Cpu } from "lucide-react";
 import { texts, useLang } from "./LangSwitch";
 
@@ -44,24 +43,16 @@ export default function Research() {
 
   return (
     <section id="tədqiqat" className="max-w-6xl mx-auto py-24 px-6 text-center">
-      <motion.h2
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-4xl font-bold gradient-text mb-12"
-      >
+      <h2 className="text-4xl font-bold gradient-text mb-12 animateFadeIn animateOpacity">
         {t.title}
-      </motion.h2>
+      </h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
         {topics.map((a, i) => (
-          <motion.a
+          <a
             key={i}
             href={a.link}
             target="_blank"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.15 }}
-            className="glass p-8 rounded-xl flex flex-col items-center text-center hover:scale-105 hover:border-yellow-400 transition duration-300"
+            className="glass p-8 rounded-xl flex flex-col animateFadeIn animateOpacity items-center text-center hover:scale-105 hover:border-yellow-400 transition duration-300"
           >
             <div className="text-yellow-400 mb-4">{a.icon}</div>
             <h3 className="text-xl font-semibold text-gray-100 mb-2">
@@ -71,7 +62,7 @@ export default function Research() {
             <span className="mt-3 text-yellow-400 text-xs hover:underline">
               {texts[lang].more} →
             </span>
-          </motion.a>
+          </a>
         ))}
       </div>
     </section>

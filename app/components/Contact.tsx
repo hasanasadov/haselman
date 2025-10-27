@@ -1,6 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
-import { Mail, Linkedin, Globe, Copy } from "lucide-react";
+import { Mail, Copy } from "lucide-react";
 import { useState } from "react";
 import { useLang, texts } from "./LangSwitch";
 
@@ -23,33 +22,17 @@ export default function Contact() {
 
   return (
     <section id="əlaqə" className="max-w-4xl mx-auto py-24 px-6 text-center">
-      <motion.h2
-        className="text-4xl font-bold gradient-text mb-6"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-      >
+      <h2 className="text-4xl font-bold gradient-text mb-6 animateFadeIn">
         {t.title}
-      </motion.h2>
+      </h2>
 
-      <motion.p
-        className="text-gray-400 mb-10 max-w-xl mx-auto"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.1 }}
-      >
+      <p className="text-gray-400 mb-10 max-w-xl mx-auto animateFadeIn">
         {lang === "az"
           ? "Əlaqə üçün aşağıdakı vasitələrdən istifadə edə bilərsiniz:"
           : "You can reach out using the options below:"}
-      </motion.p>
+      </p>
 
-      <motion.div
-        className="glass p-8 rounded-xl max-w-xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2 }}
-        viewport={{ once: true }}
-      >
+      <div className="glass p-8 animateFadeIn rounded-xl max-w-xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         {/* Mailto link */}
         <a
           href={`mailto:${email}`}
@@ -73,20 +56,15 @@ export default function Contact() {
             ? "E-poçtu kopyala"
             : "Copy email"}
         </button>
-      </motion.div>
+      </div>
 
       {/* Social / professional links */}
-     
 
-      <motion.p
-        className="text-gray-500 text-sm mt-10"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-      >
+      <p className="text-gray-500 text-sm mt-10 animateFadeIn">
         {lang === "az"
           ? "Təşəkkürlər! Elmi əməkdaşlıq və layihələr üçün əlaqə saxlaya bilərsiniz."
           : "Thank you! Feel free to contact for research or collaboration."}
-      </motion.p>
+      </p>
     </section>
   );
 }

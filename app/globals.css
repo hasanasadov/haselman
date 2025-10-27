@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 html {
   scroll-behavior: smooth;
 }
@@ -65,4 +64,39 @@ html.light {
 html.light .glass {
   background: rgba(0, 0, 0, 0.05);
   border-color: rgba(0, 0, 0, 0.1);
+}
+
+.animateFadeIn {
+  animation: fadeIn 1s;
+}
+.animateScale {
+  animation: scale 1s;
+}
+.animateOpacity {
+  animation: opacity 1s;
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    transform: translateY(-40px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }

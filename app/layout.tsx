@@ -33,11 +33,15 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-
   return (
     <html lang="az">
       <body
-        className={`${inter.className} antialiased bg-gradient-to-br from-[#0B0C10] via-[#111318] to-[#1B1D25] text-gray-100 overflow-x-hidden`}
+        className={`${inter.className} antialiased bg-gradient-to-br
+         dark:!from-[#0B0C10] dark:!via-[#111318] dark:!to-[#1B1D25]
+         from-[#282828] via-[#024e78] to-[#6b0000]
+          text-gray-100 overflow-x-hidden
+
+        `}
       >
         <LangProvider>{children}</LangProvider>
       </body>

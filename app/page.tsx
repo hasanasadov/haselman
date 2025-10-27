@@ -8,6 +8,7 @@ import Blog from "./components/Blog";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import Gallery from "./components/Gallery";
 
 export default function HomePage() {
   return (
@@ -16,6 +17,7 @@ export default function HomePage() {
       <Hero />
       <About />
       <Research />
+      <Gallery />
       <Projects />
       <Awards />
       <Blog />

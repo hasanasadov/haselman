@@ -1,5 +1,4 @@
 "use client";
-import { motion } from "framer-motion";
 import { texts, useLang } from "./LangSwitch";
 
 const projects = [
@@ -41,22 +40,14 @@ export default function Projects() {
       id="layihələr"
       className="max-w-6xl mx-auto py-24 px-6 text-center"
     >
-      <motion.h2
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-4xl font-bold gradient-text mb-12"
-      >
+      <h2 className="text-4xl font-bold gradient-text mb-12 animateFadeIn animateOpacity">
         {t.title}
-      </motion.h2>
+      </h2>
       <div className="grid md:grid-cols-3 gap-8">
         {projects.map((p, i) => (
-          <motion.div
+          <div
             key={i}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.2 }}
-            className="glass p-6 rounded-xl shadow-lg flex flex-col hover:scale-[1.02] transition"
+            className="glass p-6 rounded-xl animateFadeIn animateOpacity shadow-lg flex flex-col hover:scale-[1.02] transition"
           >
             <img
               src={p.image}
@@ -77,7 +68,7 @@ export default function Projects() {
             >
               {texts[lang].more} →
             </a>
-          </motion.div>
+          </div>
         ))}
       </div>
     </section>

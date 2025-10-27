@@ -1,5 +1,4 @@
 "use client";
-import { motion } from "framer-motion";
 import { useLang, texts } from "./LangSwitch";
 
 export default function About() {
@@ -8,13 +7,7 @@ export default function About() {
 
   return (
     <section id="haqqında" className="max-w-6xl mx-auto py-24 px-6">
-      <motion.div
-        className="glass p-10 rounded-xl grid md:grid-cols-2 gap-10"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6 }}
-      >
+      <div className="glass p-10 rounded-xl grid md:grid-cols-2 gap-10 animateFadeIn">
         <div className="space-y-4">
           <h2 className="text-3xl font-semibold gradient-text">{t.title}</h2>
           <p className="text-gray-200">{t.p1}</p>
@@ -27,21 +20,18 @@ export default function About() {
             {t.link}
           </a>
         </div>
-        <motion.div
-          className="grid grid-cols-2 gap-4"
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.2 }}
-          viewport={{ once: true }}
-        >
+        <div className="grid grid-cols-2 gap-4">
           <img src="/elman-teaching.jpg" className="rounded-lg object-cover" />
-          <img src="/elman-conference.jpg" className="rounded-lg object-cover" />
+          <img
+            src="/elman-conference.jpg"
+            className="rounded-lg object-cover"
+          />
           <img
             src="/elman-lab.jpg"
             className="rounded-lg col-span-2 h-40 object-cover"
           />
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
   );
 }

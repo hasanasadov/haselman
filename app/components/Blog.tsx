@@ -1,5 +1,4 @@
 "use client";
-import { motion } from "framer-motion";
 import { posts } from "../data/posts";
 import { texts, useLang } from "./LangSwitch";
 
@@ -15,24 +14,16 @@ export default function Blog() {
   }));
   return (
     <section id="bloq" className="max-w-6xl mx-auto py-24 px-6 text-center">
-      <motion.h2
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-4xl font-bold gradient-text mb-12"
-      >
+      <h2 className="text-4xl font-bold gradient-text mb-12 animateFadeIn">
         {t.title}
-      </motion.h2>
+      </h2>
       <div className="grid md:grid-cols-3 gap-8">
         {localizedBlogs.map((p, i) => (
-          <motion.a
+          <a
             key={p.id}
             href={p.link}
             target="_blank"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.15 }}
-            className="glass p-6 rounded-xl shadow-lg hover:scale-[1.03] transition flex flex-col"
+            className="glass animateFadeIn p-6 rounded-xl shadow-lg hover:scale-[1.03] transition flex flex-col"
           >
             <img
               src={p.image}
@@ -47,7 +38,7 @@ export default function Blog() {
             <span className="text-yellow-400 text-sm mt-3 hover:underline">
               {texts[lang].goto}
             </span>
-          </motion.a>
+          </a>
         ))}
       </div>
     </section>
